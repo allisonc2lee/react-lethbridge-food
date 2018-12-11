@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import axios from 'axios';
+import RestaurantList from '../../components/RestaurantList/RestaurantList';
 
 class Lethbridge extends Component {
     state = {
@@ -23,29 +24,29 @@ class Lethbridge extends Component {
                 console.log(error)
                 this.setState({error: true})
             })
+    }
 
-            
-
+    getRestaurantList = () => {
+        let rData = <div><p>Loading...</p></div>;
+        if(this.state.names) {
+            rData = this.state.names.map((r, i) => {
+                return(
+                    <li key={i}>
+                        <span>Name: { r.restaurant.name }</span>
+                    </li>
+                )
+            }) 
+            console.log("working")
+        }
+        return rData
     }
 
 
     render () {
-            const listItems = this.state.names.map((name, i) => {
-                i = name.restaurant.id
-                //console.log(i)
-                return(
-                    <li key={i}>
-                        <span>{name.restaurant.name}</span>
-                    </li>
-                )
-            })
-        
 
         return (
             <Aux>
-                <ul>
-                { listItems }
-                </ul>
+                <RestaurantList rList={this.getRestaurantList()}/>
                 Lethbridge is wrapped by AUX
             </Aux>
         )

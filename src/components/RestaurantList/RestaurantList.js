@@ -1,12 +1,13 @@
 import React from 'react';
+import Aux from '../../hoc/Aux/Aux';
 
 const restaurantList = (props) => {
     return(
-        <div>
-            <li>
-                <span>Should have a list of restaurant: {props.name}</span>
-            </li>
-        </div>
+        <Aux>
+            <ul>
+                { props.rList }
+            </ul>
+        </Aux>
     )
 }
 
