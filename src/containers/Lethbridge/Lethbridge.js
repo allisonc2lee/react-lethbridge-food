@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import axios from 'axios';
+import Suggestion from '../../components/Suggestion/Suggestion';
 import RestaurantList from '../../components/RestaurantList/RestaurantList';
 
 class Lethbridge extends Component {
     state = {
         names: [],
-        restaurant: "name",
+        suggestion: null,
+        getList: false,
         loading: false,
         error: false
     }
@@ -26,9 +28,21 @@ class Lethbridge extends Component {
             })
     }
 
-    getRestaurantList = () => {
-        let rData = <div><p>Loading...</p></div>;
+    getSuggestion = () => {
+        // randomItem = names[Math.floor(Math.random()*names.length)];
+        let rSuggestion;
         if(this.state.names) {
+            let randomR = this.state.names[Math.floor(Math.random()*this.state.names.length)];
+            rSuggestion = randomR.restaurant.name
+            console.log(randomR.restaurant.name)
+            this.setState({suggestion: rSuggestion})
+        } 
+        return rSuggestion
+    }
+
+    getRestaurantList = () => {
+        let rData = <p>This is a suggestion</p>
+        if(this.state.getList) {
             rData = this.state.names.map((r, i) => {
                 return(
                     <li key={i}>
@@ -36,9 +50,20 @@ class Lethbridge extends Component {
                     </li>
                 )
             }) 
-            console.log("working")
+            
         }
         return rData
+    }
+
+    getRestaurantsHandler = () => {
+        let rList = <p>Loading...</p>
+        
+        if(this.state.names) {
+            this.setState({getList: true})
+            console.log('Get getRestaurantsHandler is working fine')
+        }
+        
+        return rList
     }
 
 
@@ -46,8 +71,10 @@ class Lethbridge extends Component {
 
         return (
             <Aux>
-                <RestaurantList rList={this.getRestaurantList()}/>
-                Lethbridge is wrapped by AUX
+                <h2>Lethbridge Food Guide</h2>
+                <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion}/>
+                {/* <RestaurantList rList={ this.getRestaurantList() }/> */}
+                <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/>
             </Aux>
         )
     }
