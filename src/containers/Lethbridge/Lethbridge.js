@@ -14,15 +14,21 @@ class Lethbridge extends Component {
         suggestion: null,
         getList: false,
         loading: false,
-        error: false
+        error: false,
+        selected: false,
+        sort: "1",
+        list: []
     }
+// https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
 
     componentDidMount() {
         const config = { headers: {'user-key': ''} };
-        axios.get('/search?entity_id=2891&entity_type=city&count=50&sort=rating', config)
+        const sortData = "&cuisines=" + this.state.sort
+        axios.get('/search?entity_id=2891&entity_type=city&count=50&sort=rating' + sortData , config) // The dault search value 
             .then(res => {
+                console.log(res.data)
                 // console.log(res.data.restaurants)
-                this.setState({ names: res.data.restaurants })
+                // this.setState({ names: res.data.restaurants })
             })
             .catch(error => {
                 console.log(error)
@@ -59,24 +65,45 @@ class Lethbridge extends Component {
 
     getRestaurantsHandler = () => {
         let rList = <p>Loading...</p>
-        
         if(this.state.names) {
             this.setState({getList: true})
             console.log('Get getRestaurantsHandler is working fine')
         }
-        
         return rList
     }
 
+    gotOption = (event) => {
+        this.setState({sort: event.target.value, select: true})
+        if(this.state.selected) {
+            console.log('selected option:',event.target.value)
+            // const cuisineItems = this.state.cuisines.map((cuisine) => {
+            //     return <option>{cuisine.cuisine.cuisine_name}</option>
+            // })
+            this.setState({sort: event.target.value})
+        }
+        console.log(this.state.sort)
+        console.log('Selected value:', event.target.value);
+    }
 
     render () {
-
+        // const cuisineItems = this.state.cuisines.map((cuisine) => {
+        //     i = "hello"
+        //     return(
+        //         <option key={i}>{cuisine.cuisine.cuisine_name}</option>
+        //     )
+        // })
         return (
             <Aux>
                 <h2>Lethbridge Food Guide</h2>
-                <Filter />
+                <select onChange={this.gotOption}>
+                    <option value="1">--Please select a cusion 1--</option>
+                    <option value="2">--Please select a cusion 2--</option>
+                    <option value="3">--Please select a cusion 3--</option>
+                    <option value="4">--Please select a cusion 4--</option>
+                    <option value="5">--Please select a cusion 5--</option>
+                    <option value="6">--Please select a cusion 6--</option>
+                </select>
                 <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion}/>
-                {/* <RestaurantList rList={ this.getRestaurantList() }/> */}
                 <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/>
             </Aux>
         )
