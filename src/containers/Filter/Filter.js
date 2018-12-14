@@ -3,11 +3,15 @@ import axios from 'axios';
 import Aux from '../../hoc/Aux/Aux';
 
 //https://medium.com/@AndrewBonner2/controlled-components-in-react-920f3e795d87
+//https://stackoverflow.com/questions/44366709/how-to-pass-options-value-to-a-function-in-react
+//https://github.com/JedWatson/react-select/issues/1631
+// https://www.reddit.com/r/reactjs/comments/3mq0wr/generating_option_tags_for_a_select_element/
 
 class filter extends Component {
     state = {
         loading: false,
-        cuisines: []
+        cuisines: [],
+        value: ""
     }
 
     componentDidMount() {
@@ -23,9 +27,10 @@ class filter extends Component {
             })
     }
 
-    getKey() {
-        console.log("Calling the getKey()")
-        
+    gotOption = (event) => {
+        this.setState({value: event.target.value})
+        console.log(this.state.value)
+        console.log('Selected value:', event.target.value);
     }
 
     render () {
@@ -38,7 +43,7 @@ class filter extends Component {
         return (
             <Aux>
                 <label htmlFor="filter">Filter by Poet: </label>
-                <select onFocus={ this.getKey }>
+                <select onChange={this.gotOption}>
                     <option value="">--Please select a cusion--</option>
                     { cuisineItems }
                 </select>
