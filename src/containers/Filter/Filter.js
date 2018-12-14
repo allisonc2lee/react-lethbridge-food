@@ -11,7 +11,7 @@ class filter extends Component {
     }
 
     componentDidMount() {
-        const config = { headers: {'user-key': ''} };
+        const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d'} };
         axios.get('/cuisines?city_id=2891', config)
             .then(res => {
                 this.setState({cuisines: res.data.cuisines})
@@ -23,19 +23,22 @@ class filter extends Component {
             })
     }
 
+    getKey() {
+        console.log("Calling the getKey()")
+        
+    }
+
     render () {
         const cuisineItems = this.state.cuisines.map((cuisine, i) => {
             i = cuisine.cuisine.cuisine_id
             //console.log(i)
-            return(
-                <option key={i}>{cuisine.cuisine.cuisine_name}</option>
-            )
+            return <option key={i}>{cuisine.cuisine.cuisine_name}</option>
         })
 
         return (
             <Aux>
                 <label htmlFor="filter">Filter by Poet: </label>
-                <select>
+                <select onFocus={ this.getKey }>
                     <option value="">--Please select a cusion--</option>
                     { cuisineItems }
                 </select>

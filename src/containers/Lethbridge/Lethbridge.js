@@ -14,7 +14,8 @@ class Lethbridge extends Component {
         suggestion: null,
         getList: false,
         loading: false,
-        error: false
+        error: false,
+        filter: null
     }
 
     componentDidMount() {
@@ -22,12 +23,22 @@ class Lethbridge extends Component {
         axios.get('/search?entity_id=2891&entity_type=city&count=50&sort=rating', config)
             .then(res => {
                 // console.log(res.data.restaurants)
+
+                // Get restaurant name from the popular list is the Default setting 
                 this.setState({ names: res.data.restaurants })
             })
             .catch(error => {
                 console.log(error)
                 this.setState({error: true})
             })
+    }
+
+    getFilterResult() {
+        if(this.state.filter) {
+            console.log('Get the cusion id and put it in the search api')
+        } else {
+            console.log('Then simpliy runs the get suggestion function')
+        }
     }
 
     getSuggestion = () => {
