@@ -14,17 +14,17 @@ class Lethbridge extends Component {
         loading: false,
         error: false,
         changed: false,
-        sort: "30",
+        sort: "1",
         value: "2",
         list: []
     }
 // https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
 
     componentDidMount() {
-        const config = { headers: {'user-key': ''} };
-        // The dault search value "American food"
-        // If the user selected an option & submitted, we update the sortData value with the id
-        axios.get(`/search?entity_id=2891&entity_type=city&count=50&sort=rating&&cuisines=${this.state.sort}` , config) 
+        const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d '} };
+        const sortData = "&cuisines=" + this.state.sort // The dault search value "American food"
+                                                        // If the user selected an option & submitted, we update the sortData value with the id
+        axios.get('/search?entity_id=2891&entity_type=city&count=50&sort=rating' + sortData , config) 
             .then(res => {
                 this.setState({names: res.data.restaurants})
                 console.log(this.state.names)
