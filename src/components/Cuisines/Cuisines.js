@@ -8,7 +8,8 @@ class Cuisines extends Component {
     error: false,
     optionList: [],
     value: 1,
-    getValue: false
+    getValue: false,
+    changed: false
   }
   componentDidMount() {
       const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d'} };
@@ -25,6 +26,7 @@ class Cuisines extends Component {
   }
 
     updateVal = () => {
+      
       console.log('updated Value is: ' + this.state.value)
       return this.state.value
     }
@@ -32,7 +34,7 @@ class Cuisines extends Component {
     getOption = (event) => {
         let newVal = {...this.state.value}
         newVal = event.target.value
-        this.setState({value: + newVal})
+        this.setState({value: + newVal, changed: true})
         console.log('current Value is: ' + newVal)
         return newVal
     }
@@ -56,7 +58,7 @@ class Cuisines extends Component {
               <option value="2">--Please select a cusion 2--</option>
               { cuisineItems }
           </select>
-          <Guide getOption={this.updateVal} value={ this.updateVal()}/>
+          <Guide getOption={this.updateVal} updated={this.state.changed} value={this.state.value}/>
            
         </Aux>
 

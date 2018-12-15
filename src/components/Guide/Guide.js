@@ -17,17 +17,21 @@ class Guide extends Component {
         getList: false,
         loading: false,
         error: false,
-        changed: false,
-        value: this.props.value,
+        updated: this.props.updated,
+        value: 8,
         list: []
     }
 // https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
 
     componentDidMount() {
+        this.getZomato()
+    }
+
+    getZomato() {
         const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d'} };
-       // The dault search value "American food"
+        // The dault search value "American food"
         // If the user selected an option & submitted, we update the sortData value with the id
-        axios.get(`/search?entity_id=2891&entity_type=city&count=50&sort=rating$&cuisines=${this.state.value}` , config) 
+        axios.get(`/search?entity_id=2891&entity_type=city&count=50&sort=rating$&cuisines=${this.props.value}` , config) 
             .then(res => {
                 this.setState({names: res.data.restaurants})
                 console.log(this.state.names)
@@ -37,8 +41,10 @@ class Guide extends Component {
             })
     }
 
-    // Get Suggestion and Get List need to be updated after user selected a value
 
+    
+
+    // Get the Suggestion
     getSuggestion = () => { 
         let rSuggestion;
         if(this.state.names) {
@@ -50,6 +56,17 @@ class Guide extends Component {
         return rSuggestion
     }
 
+
+    // Get the Json
+    getRestaurantsHandler = () => {
+        let rList = <p>Loading...</p>
+        if(this.state.names) {
+            this.setState({getList: true})
+        }
+        return rList
+    }
+
+    // Output the restaurant List 
     getRestaurantList = () => {
         let rData = <p>This is a suggestion</p>
         if(this.state.getList) {
@@ -65,19 +82,11 @@ class Guide extends Component {
         return rData
     }
 
-    getRestaurantsHandler = () => {
-        let rList = <p>Loading...</p>
-        if(this.state.names) {
-            this.setState({getList: true})
-        }
-        return rList
-    }
-
-
     render () {
+        
         return (
             <Aux>
-                <button onClick={ this.props.getOption }>Update Value: {this.state.value} </button>
+                <button onClick={ this.props.getOption }>Update Value: { this.props.value } </button>
                 <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion}/>
                 <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/>
             </Aux>
