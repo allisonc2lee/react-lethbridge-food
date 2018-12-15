@@ -11,7 +11,7 @@ class Cuisines extends Component {
     getValue: false
   }
   componentDidMount() {
-      const config = { headers: {'user-key': ''} };
+      const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d'} };
     // The dault search value "American food"
       // If the user selected an option & submitted, we update the sortData value with the id
       axios.get(`https://developers.zomato.com/api/v2.1/cuisines?city_id=2891` , config) 
@@ -23,20 +23,22 @@ class Cuisines extends Component {
               this.setState({error: true})
           })
   }
+
+    updateVal = () => {
+      console.log('updated Value is: ' + this.state.value)
+      return this.state.value
+    }
   
-    gotOption = (event) => {
+    getOption = (event) => {
         let newVal = {...this.state.value}
         newVal = event.target.value
-        this.setState({getValue: true})
-        if(this.state.getValue) {
-          this.setState({value: newVal})
-          console.log(newVal)
-        }
-
+        this.setState({value: + newVal})
+        console.log('current Value is: ' + newVal)
+        return newVal
     }
 
     render() {
-      const onChanged = this.setState.getValue
+      // const onChanged = this.state.getValue
       const CuisinesCopy = [...this.state.optionList]
       const cuisineItems = CuisinesCopy.map((item) => {
         return(
@@ -49,12 +51,12 @@ class Cuisines extends Component {
         <Aux>
           <p>Goddamnit! I am going to get the updated json data</p>
             
-          <select value={this.state.value} onChange={this.gotOption}>
+          <select onChange={this.getOption}>
               <option value="1">--Please select a cusion--</option>
               <option value="2">--Please select a cusion 2--</option>
               { cuisineItems }
           </select>
-          {onChanged ? (<Guide getOption={this.getOption} value={this.state.value}/>) : (<Guide getOption={this.getOption} value="182"/>)}
+          <Guide getOption={this.updateVal} value={ this.updateVal()}/>
            
         </Aux>
 
