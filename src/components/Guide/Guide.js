@@ -4,12 +4,11 @@ import axios from 'axios';
 
 import Suggestion from '../../components/Suggestion/Suggestion';
 import RestaurantList from '../../components/RestaurantList/RestaurantList';
-import Cuisines from '../../components/Cuisines/Cuisines';
 
-class Lethbridge extends Component {
+class Guide extends Component {
     constructor(props) {
         super(props)
-        console.log(props)
+        console.log(this.props.value + ' in Guide')
     }
 
     state = {
@@ -19,7 +18,7 @@ class Lethbridge extends Component {
         loading: false,
         error: false,
         changed: false,
-        value: "2",
+        value: this.props.value,
         list: []
     }
 // https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
@@ -28,7 +27,7 @@ class Lethbridge extends Component {
         const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d'} };
        // The dault search value "American food"
         // If the user selected an option & submitted, we update the sortData value with the id
-        axios.get(`/search?entity_id=2891&entity_type=city&count=50&sort=rating$&cuisines=${this.props.value}` , config) 
+        axios.get(`/search?entity_id=2891&entity_type=city&count=50&sort=rating$&cuisines=${this.state.value}` , config) 
             .then(res => {
                 this.setState({names: res.data.restaurants})
                 console.log(this.state.names)
@@ -78,8 +77,7 @@ class Lethbridge extends Component {
     render () {
         return (
             <Aux>
-                <h2>Lethbridge Food Guide</h2>
-                <Cuisines updateValue={this.updateValueHandler}/>
+                <button onClick={ this.props.getOption }>Update Value: {this.state.value} </button>
                 <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion}/>
                 <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/>
             </Aux>
@@ -87,7 +85,7 @@ class Lethbridge extends Component {
     }
 }
 
-export default Lethbridge;
+export default Guide;
 
 
 // How about get the cusine list on DidMoutn
