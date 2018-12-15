@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Lethbridge from './containers/Lethbridge/Lethbridge';
+import Cuisines from './components/Cuisines/Cuisines';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Lethbridge />
+        <Cuisines />
       </div>
     );
   }
