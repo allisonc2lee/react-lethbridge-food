@@ -7,6 +7,11 @@ import RestaurantList from '../../components/RestaurantList/RestaurantList';
 import Cuisines from '../../components/Cuisines/Cuisines';
 
 class Lethbridge extends Component {
+    constructor(props) {
+        super(props)
+        console.log(props)
+    }
+
     state = {
         names: [],
         suggestion: null,
@@ -14,17 +19,16 @@ class Lethbridge extends Component {
         loading: false,
         error: false,
         changed: false,
-        sort: "1",
         value: "2",
         list: []
     }
 // https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
 
     componentDidMount() {
-        const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d '} };
-        const sortData = "&cuisines=" + this.state.sort // The dault search value "American food"
-                                                        // If the user selected an option & submitted, we update the sortData value with the id
-        axios.get('/search?entity_id=2891&entity_type=city&count=50&sort=rating' + sortData , config) 
+        const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d'} };
+       // The dault search value "American food"
+        // If the user selected an option & submitted, we update the sortData value with the id
+        axios.get(`/search?entity_id=2891&entity_type=city&count=50&sort=rating$&cuisines=${this.props.value}` , config) 
             .then(res => {
                 this.setState({names: res.data.restaurants})
                 console.log(this.state.names)
@@ -70,27 +74,12 @@ class Lethbridge extends Component {
         return rList
     }
 
-    gotOption = (event) => {
-        this.setState({value: event.target.value})
-        console.log(this.state.value)
-        console.log('selected option:',event.target.value)
-    }
 
     render () {
-        const cuisineItems = this.state.names.map((name) => {
-            return(
-                <option key= {name.restaurant.id} >{name.restaurant.name}</option>
-            )
-        })
         return (
             <Aux>
                 <h2>Lethbridge Food Guide</h2>
-                <select value={this.state.value} onChange={this.gotOption}>
-                    <option value="1">--Please select a cusion--</option>
-                    <option value="2">--Please select a cusion 2--</option>
-                    { cuisineItems }
-                </select>
-                <Cuisines />
+                <Cuisines updateValue={this.updateValueHandler}/>
                 <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion}/>
                 <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/>
             </Aux>
