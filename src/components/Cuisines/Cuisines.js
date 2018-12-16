@@ -7,8 +7,9 @@ class Cuisines extends Component {
   state = {
     error: false,
     optionList: [],
-    value: 1,
-    getValue: false
+    value: 73,
+    getValue: false,
+    changed: false
   }
   componentDidMount() {
       const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d'} };
@@ -23,26 +24,27 @@ class Cuisines extends Component {
               this.setState({error: true})
           })
   }
-
-    updateVal = () => {
-      console.log('updated Value is: ' + this.state.value)
-      return this.state.value
-    }
   
     getOption = (event) => {
         let newVal = {...this.state.value}
         newVal = event.target.value
-        this.setState({value: + newVal})
+        this.setState({value: + newVal, changed: true})
         console.log('current Value is: ' + newVal)
         return newVal
     }
 
+    clicked = () => {
+      this.props.onCuisineClick(this.props.id); // Call with cuisine id
+    };
+
     render() {
       // const onChanged = this.state.getValue
       const CuisinesCopy = [...this.state.optionList]
+      console.log(CuisinesCopy)
       const cuisineItems = CuisinesCopy.map((item) => {
         return(
-            <option key={item.cuisine.cuisine_id.toString()} value={ item.cuisine.cuisine_id }>{item.cuisine.cuisine_name}</option>
+            <option key={item.cuisine.cuisine_id.toString()} value={ item.cuisine.cuisine_id } onClick={ this.clicked }>{item.cuisine.cuisine_name}</option>
+            
         )
       })
 
@@ -56,8 +58,7 @@ class Cuisines extends Component {
               <option value="2">--Please select a cusion 2--</option>
               { cuisineItems }
           </select>
-          <Guide getOption={this.updateVal} value={ this.updateVal()}/>
-           
+          <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>
         </Aux>
 
         )

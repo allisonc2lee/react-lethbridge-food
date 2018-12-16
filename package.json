@@ -5,9 +5,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "google-map-react": "^1.1.1",
+    "package.json": "^2.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-redux": "^6.0.0",
     "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
     "zomato.js": "^1.1.0"
   },
   "scripts": {
@@ -26,7 +29,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "css-loader": "^2.0.1",
     "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1"
   }
 }
