@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "google-map-react": "^1.1.1",
+    "package.json": "^2.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
@@ -31,7 +32,6 @@
     "css-loader": "^2.0.1",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.27.1"
+    "style-loader": "^0.23.1"
   }
 }
