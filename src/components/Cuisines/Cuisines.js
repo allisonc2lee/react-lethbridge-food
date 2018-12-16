@@ -59,7 +59,6 @@ class Cuisines extends Component {
               { cuisineItems }
           </select>
           <Guide getOption={this.updateVal} updated={this.state.changed} value={this.state.value}/>
-           
         </Aux>
 
         )
