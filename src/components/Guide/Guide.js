@@ -24,7 +24,7 @@ class Guide extends Component {
 // https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
 
     componentDidMount() {
-        this.getZomato()
+        // this.getZomato()
     }
 
     getZomato() {
