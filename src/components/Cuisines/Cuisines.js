@@ -7,7 +7,7 @@ class Cuisines extends Component {
   state = {
     error: false,
     optionList: [],
-    value: 1,
+    value: 73,
     getValue: false,
     changed: false
   }
@@ -24,12 +24,6 @@ class Cuisines extends Component {
               this.setState({error: true})
           })
   }
-
-    updateVal = () => {
-      
-      console.log('updated Value is: ' + this.state.value)
-      return this.state.value
-    }
   
     getOption = (event) => {
         let newVal = {...this.state.value}
@@ -64,7 +58,7 @@ class Cuisines extends Component {
               <option value="2">--Please select a cusion 2--</option>
               { cuisineItems }
           </select>
-          <Guide getOption={this.updateVal} updated={this.state.changed} value={this.state.value}/>
+          <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>
         </Aux>
 
         )

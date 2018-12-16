@@ -14,17 +14,26 @@ class Guide extends Component {
     state = {
         names: [],
         suggestion: null,
-        getList: false,
+        updated: false,
         loading: false,
         error: false,
-        updated: this.props.updated,
-        value: 8,
         list: []
     }
-// https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
+    
+    // https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
 
     componentDidMount() {
-        // this.getZomato()
+       this.getZomato()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevProps.value !== this.props.value) {
+            this.setState({updated: true})
+            if(this.state.updated) {
+                this.getZomato()
+                console.log('The state is updated in the Guide component')
+            }
+        }
     }
 
     getZomato() {
@@ -40,9 +49,6 @@ class Guide extends Component {
                 this.setState({error: true})
             })
     }
-
-
-    
 
     // Get the Suggestion
     getSuggestion = () => { 
