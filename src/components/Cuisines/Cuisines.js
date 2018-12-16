@@ -7,12 +7,12 @@ class Cuisines extends Component {
   state = {
     error: false,
     optionList: [],
-    value: 73,
+    value: null,
     getValue: false,
     changed: false
   }
   componentDidMount() {
-      const config = { headers: {'user-key': '3f0bd37334434b025a21e7ad2c70e99d'} };
+      const config = { headers: {'user-key': ''} };
     // The dault search value "American food"
       // If the user selected an option & submitted, we update the sortData value with the id
       axios.get(`https://developers.zomato.com/api/v2.1/cuisines?city_id=2891` , config) 
@@ -55,7 +55,6 @@ class Cuisines extends Component {
             
           <select onChange={this.getOption}>
               <option value="1">--Please select a cusion--</option>
-              <option value="2">--Please select a cusion 2--</option>
               { cuisineItems }
           </select>
           <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>
