@@ -2,7 +2,6 @@ import React from 'react';
 import Aux from '../../hoc/Aux/Aux';
 
 const suggestion = (props) => {
-
     return (
         <Aux>
             <div>
