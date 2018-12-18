@@ -1,5 +1,6 @@
 .DS_STORE
 node_modules
+package-lock.json
 scripts/flow/*/.flowconfig
 *~
 *.pyc
@@ -22,3 +23,5 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
+package-lock.json
+*.json
