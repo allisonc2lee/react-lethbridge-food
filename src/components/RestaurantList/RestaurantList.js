@@ -7,6 +7,7 @@ const restaurantList = (props) => {
             <button onClick={props.getList}>Get List</button>
             <ul>
                 { props.rList }
+                { props.default }
             </ul>
         </Aux>
     )
