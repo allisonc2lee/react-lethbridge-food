@@ -53,6 +53,21 @@ class Guide extends Component {
 
     // Get the Suggestion
     getSuggestion = () => { 
+        const newName = [...this.state.names]
+    
+        if(this.state.getList) {
+
+            const uniKeys = [...(new Set(newName.map((name, i) => {
+                return(
+                    <li key={i}>
+                        <span>Name: { name.restaurant.name }</span>
+                    </li>
+                )
+            })))]
+
+        
+            return uniKeys
+        }
         let rSuggestion;
         if(this.state.names) {
             let randomR = this.state.names[Math.floor(Math.random()*this.state.names.length)];
@@ -71,19 +86,8 @@ class Guide extends Component {
 
     // Output the restaurant List 
     getRestaurantList = () => {
-        const newName = [...this.state.names]
-        let rData = <p>This is a suggestion</p>
-        if(this.state.getList) {
-            rData = newName.map((r, i) => {
-                return(
-                    <li key={i}>
-                        <span>Name: { r.restaurant.name }</span>
-                    </li>
-                )
-            })
-            
-        }
-        return rData
+
+
     }
 
     render () {
@@ -91,7 +95,7 @@ class Guide extends Component {
         return (
             <Aux>
                 <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion}/>
-                <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/>
+                {/* <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/> */}
             </Aux>
         )
     }
