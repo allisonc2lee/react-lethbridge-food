@@ -51,10 +51,10 @@ class Cuisines extends Component {
       return (
         
         <Aux>
-          <p>Goddamnit! I am going to get the updated json data</p>
+          <h2>Lethbridge Food Guide</h2>
             
           <select onChange={this.getOption}>
-              <option value="1">--Please select a cusion--</option>
+              <option value="1">-- Please select a cusion --</option>
               { cuisineItems }
           </select>
           <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>

@@ -10,7 +10,7 @@ const suggestion = (props) => {
                 <div>
                    {props.suggestion}
                 </div>
-                <button onClick={props.suggested}>Get Suggestion</button>
+                <button onClick={props.suggested} disabled={!props.isDisabled}>Get Suggestion</button>
             </div>
         </Aux>
     )
