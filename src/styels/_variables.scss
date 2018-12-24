@@ -1,0 +1,44 @@
+// Width
+$max-width: 1200px;
+
+// Breakpoint
+$lg-desktop: 1200px;
+$sm-desktop: 992px;
+$tablet: 767px;
+$mobile: 480px;
+$sm-mobile: 320px;
+
+@mixin if-min-width($width) {
+    @media screen and (min-width: $width) {
+        @content;
+    }
+}
+
+// Colors
+$orange: #ffb942;
+$green: #cfe053;
+$blue: #9de6e8;
+$white: #ffffff;
+$grey: #e0e0e0;
+$black: #282823;
+
+
+// Font
+$nunito: 'Nunito Sans', sans-serif;
+$mont: 'Montserrat', sans-serif;
+
+$fw--1: 400;
+$fw--2: 600;
+$fw--3: 800;
+
+@mixin font-style($family, $weight, $color, $height, $spacing) {
+    font-family: $family;
+    font-weight: $weight;
+    line-height: $height;
+    letter-spacing: $spacing;
+    color: $color;
+}
+
+@mixin heading--1 {
+    @include font-style( $nunito, $fw--3 , $white , normal , aut)
+}

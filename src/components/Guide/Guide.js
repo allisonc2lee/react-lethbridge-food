@@ -3,7 +3,7 @@ import Aux from '../../hoc/Aux/Aux';
 import axios from 'axios';
 
 import Suggestion from '../../components/Suggestion/Suggestion';
-import RestaurantList from '../../components/RestaurantList/RestaurantList';
+import styles from '../../styels/app.module.scss';
 
 class Guide extends Component {
     constructor(props) {

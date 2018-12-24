@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import styles from './Cuisines.module.scss'
 import Guide from '../Guide/Guide';
+import styles from '../../styels/app.module.scss';
 
 class Cuisines extends Component {
   state = {
@@ -49,8 +49,7 @@ class Cuisines extends Component {
       })
 
       return (
-        <div className={styles.container}>
-            <h2>Lethbridge Food Guide</h2>
+        <div>
             <select onChange={this.getOption}>
                 <option value="1">-- Please select a cusion --</option>
                 { cuisineItems }
