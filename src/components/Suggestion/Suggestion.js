@@ -8,7 +8,8 @@ const suggestion = (props) => {
             <div>
                 <h2>Let's go to</h2>
                 <div>
-                   {props.suggestion}
+                   <p><strong>{props.suggestion}</strong></p>
+                   <p><strong>{props.address}</strong></p>
                 </div>
                 <button onClick={props.suggested} disabled={!props.isDisabled}>Get Suggestion</button>
             </div>

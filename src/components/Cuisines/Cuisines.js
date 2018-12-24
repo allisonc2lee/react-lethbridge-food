@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Aux from '../../hoc/Aux/Aux';
+import styles from './Cuisines.module.scss'
 import Guide from '../Guide/Guide';
 
 class Cuisines extends Component {
@@ -49,16 +49,14 @@ class Cuisines extends Component {
       })
 
       return (
-        
-        <Aux>
-          <h2>Lethbridge Food Guide</h2>
-            
-          <select onChange={this.getOption}>
-              <option value="1">-- Please select a cusion --</option>
-              { cuisineItems }
-          </select>
-          <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>
-        </Aux>
+        <div className={styles.container}>
+            <h2>Lethbridge Food Guide</h2>
+            <select onChange={this.getOption}>
+                <option value="1">-- Please select a cusion --</option>
+                { cuisineItems }
+            </select>
+            <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>
+        </div>
 
         )
     }

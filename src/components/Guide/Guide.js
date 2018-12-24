@@ -66,14 +66,17 @@ class Guide extends Component {
         
             return uniKeys
         }
-        let rSuggestion;
+
+        let rSuggestion
+        let rAddress
+
         if(this.state.names) {
             let randomR = this.state.names[Math.floor(Math.random()*this.state.names.length)];
             rSuggestion = randomR.restaurant.name
+            rAddress = randomR.restaurant.location.address
             //console.log(randomR.restaurant.name)
-            this.setState({suggestion: rSuggestion})
+            this.setState({suggestion: rSuggestion, address: rAddress})
         } 
-        return rSuggestion
     }
 
 
@@ -91,7 +94,7 @@ class Guide extends Component {
         
         return (
             <Aux>
-                <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion} isDisabled={this.isDisabled()}/>
+                <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion} address={this.state.address} isDisabled={this.isDisabled()}/>
                 {/* <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/> */}
             </Aux>
         )
