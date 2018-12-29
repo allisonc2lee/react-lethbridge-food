@@ -17,7 +17,7 @@ class Guide extends Component {
         address: null,
         suggested: false,
         list: [],
-        testing: "testing"
+        updatedList: false
     }
     
     // https://developers.zomato.com/api/v2.1/search?entity_id=2891&entity_type=city&cuisines=168&sort=rating
@@ -30,6 +30,7 @@ class Guide extends Component {
         
         if(prevProps.value !== this.props.value) {
                 this.getZomato()
+                this.setState({updatedList:true})
                 console.log('The state is updated in the Guide component')
             
         }
@@ -85,16 +86,11 @@ class Guide extends Component {
         this.setState({getList: true})
     }
 
-
-    isDisabled = () => {
-        return true;
-    }
-
     render () {
         
         return (
             <Aux>
-                <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion} address={this.state.address} isDisabled={this.isDisabled()}/>
+                <Suggestion suggested={ this.getSuggestion } suggestion={this.state.suggestion} address={this.state.address} isDisabled={this.state.updatedList}/>
                 {/* <RestaurantList getList={ this.getRestaurantsHandler } rList={ this.getRestaurantList() }/> */}
             </Aux>
         )
