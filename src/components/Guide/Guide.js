@@ -3,7 +3,6 @@ import Aux from '../../hoc/Aux/Aux';
 import axios from 'axios';
 
 import Suggestion from '../../components/Suggestion/Suggestion';
-import styles from '../../styels/app.module.scss';
 
 class Guide extends Component {
     constructor(props) {
@@ -51,7 +50,10 @@ class Guide extends Component {
     }
 
     // Get the Suggestion
-    getSuggestion = () => { 
+    getSuggestion = (event) => { 
+        
+        event.preventDefault();
+
         const newName = [...this.state.names]
     
         if(this.state.getList) {

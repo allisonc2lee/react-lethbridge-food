@@ -26,6 +26,7 @@ class Cuisines extends Component {
   }
   
     getOption = (event) => {
+        event.preventDefault();
         let newVal = {...this.state.value}
         newVal = event.target.value
         this.setState({value: + newVal, changed: true})

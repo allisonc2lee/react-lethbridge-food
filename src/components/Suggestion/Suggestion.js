@@ -1,6 +1,5 @@
 import React from 'react';
 import Aux from '../../hoc/Aux/Aux';
-import styles from '../../styels/app.module.scss';
 
 const suggestion = (props) => {
 
