@@ -59,3 +59,15 @@ h1.appTitle {
         @include font-style($mont, $fw--2, $white, $height: auto, $spacing: 5px);
     }
 }
+
+// GetSuggestionButton.js
+// ***********************
+
+.GetSuggestionButton {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    padding: 1em;
+    margin: 0 auto $sec-margin;
+}

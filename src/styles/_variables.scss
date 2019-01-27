@@ -36,7 +36,7 @@ $fw--1: 400;
 $fw--2: 600;
 $fw--3: 800;
 
-$sec-margin: 8rem;
+$sec-margin: 50px;
 
 @mixin font-style($family, $weight, $color, $height, $spacing) {
     font-family: $family;
