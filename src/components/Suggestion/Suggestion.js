@@ -8,11 +8,11 @@ const Suggestion = (props) => {
     return (
         <Aux>
             <div className={styles.Suggestion}>
-                <div className={styles.Suggestion__getSuggestion}>
-                   <p className={styles.getSuggestion__name}>{props.suggestion}</p>
-                   <p className={styles.getSuggestion__address}>{props.address}</p>
+                <div className={styles.Suggestion__mySuggestion}>
+                   <h2 className={styles.mySuggestion__name}>{props.suggestion}</h2>
+                   <p className={styles.mySuggestion__address}>{props.address}</p>
                 </div>
-                <button className={styles.Suggestion__button} onClick={props.suggested} disabled={!props.isDisabled}>Get Suggestion</button>
+                <button className={styles.Suggestion__button} onClick={props.suggested} disabled={!props.isDisabled}>GO !</button>
             </div>
         </Aux>
     )

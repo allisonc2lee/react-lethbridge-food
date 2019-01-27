@@ -16,6 +16,7 @@ $sm-mobile: 320px;
 
 // Colors
 $orange: #f39c12;
+$orange--2: #FF933D;
 $beach: #FFFCE6;
 $green: #cfe053;
 $blue: #9de6e8;
@@ -38,6 +39,10 @@ $fw--3: 800;
 
 $sec-margin: 8rem;
 
+$border-radius: 10px;
+$border-right: 0 $border-radius $border-radius 0;
+$border-left: $border-radius 0 0px $border-radius;
+
 @mixin font-style($family, $weight, $color, $height, $spacing) {
     font-family: $family;
     font-weight: $weight;
@@ -47,7 +52,7 @@ $sec-margin: 8rem;
 }
 
 @mixin heading--1 {
-    @include font-style($nunito, $fw--3, $white, normal, aut)
+    @include font-style($nunito, $fw--3, $white, normal, auto);
 }
 
 @mixin display-font($size: 25px, $color:$white) {

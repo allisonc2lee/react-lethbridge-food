@@ -52,10 +52,12 @@ class Cuisines extends Component {
       return (
         <div className={styles.Cuisines}>
             <div className={styles.CuisinesSelect}>
-                <select className={styles.CuisinesOptions} onChange={this.getOption}>
-                    <option value="1">-- Please select a cusion --</option>
-                    { cuisineItems }
-                </select>
+                <div className={styles.select__container}>
+                    <select className={styles.CuisinesOptions} onChange={this.getOption}>
+                        <option id="selectCustion" value="1">Please select a cusion</option>
+                        { cuisineItems }
+                    </select>
+                </div>
                 <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>
             </div>
         </div>
