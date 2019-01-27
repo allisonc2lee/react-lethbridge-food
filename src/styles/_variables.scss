@@ -15,7 +15,8 @@ $sm-mobile: 320px;
 }
 
 // Colors
-$orange: #ffb942;
+$orange: #f39c12;
+$beach: #FFFCE6;
 $green: #cfe053;
 $blue: #9de6e8;
 $white: #ffffff;
@@ -24,21 +25,33 @@ $black: #282823;
 
 
 // Font
-$nunito: 'Nunito Sans', sans-serif;
-$mont: 'Montserrat', sans-serif;
+$nunito: 'Nunito Sans',
+sans-serif;
+$mont: 'Montserrat',
+sans-serif;
+$leckerli:'Leckerli One',
+cursive;
 
 $fw--1: 400;
 $fw--2: 600;
 $fw--3: 800;
 
+$sec-margin: 8rem;
+
 @mixin font-style($family, $weight, $color, $height, $spacing) {
     font-family: $family;
     font-weight: $weight;
+    color: $color;
     line-height: $height;
     letter-spacing: $spacing;
-    color: $color;
 }
 
 @mixin heading--1 {
-    @include font-style( $nunito, $fw--3 , $white , normal , aut)
+    @include font-style($nunito, $fw--3, $white, normal, aut)
+}
+
+@mixin display-font($size: 25px, $color:$white) {
+    font-family: $leckerli;
+    font-size: $size;
+    color: $color;
 }

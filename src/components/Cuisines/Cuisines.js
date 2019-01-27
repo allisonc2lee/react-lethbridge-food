@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Guide from '../Guide/Guide';
-import styles from '../../styels/app.module.scss';
+import styles from '../../styles/app.module.scss';
 
 class Cuisines extends Component {
   state = {
@@ -50,12 +50,14 @@ class Cuisines extends Component {
       })
 
       return (
-        <div>
-            <select onChange={this.getOption}>
-                <option value="1">-- Please select a cusion --</option>
-                { cuisineItems }
-            </select>
-            <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>
+        <div className={styles.Cuisines}>
+            <div className={styles.CuisinesSelect}>
+                <select className={styles.CuisinesOptions} onChange={this.getOption}>
+                    <option value="1">-- Please select a cusion --</option>
+                    { cuisineItems }
+                </select>
+                <Guide getOption={this.getOption} updated={this.state.changed} value={this.state.value}/>
+            </div>
         </div>
 
         )
