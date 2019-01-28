@@ -1,5 +1,20 @@
 // Global
 // ***********************
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: block;
+}
+
 p,
 select,
 button {
@@ -11,7 +26,7 @@ button {
 // ***********************
 .container {
     height: 100%;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 
@@ -25,16 +40,29 @@ button {
 }
 
 h1.appTitle {
-    @include display-font(100px);
+    @include display-font(50px);
     width: 80%;
     margin: auto;
     text-align: center;
     transform: rotate(-8deg);
-    padding-top: ($sec-margin);
+    padding-top: ($sec-margin/2 + 1rem);
+
+    @include if-min-width($tablet) {
+        @include display-font(100px);
+    }
+
+    // @include if-min-width($desktop) {
+    //     @include display-font(100px);
+    // }
 
     .appTitle__lethbridge {
-        font-size: 120px;
+        @include if-min-width($desktop) {
+            padding-top: ($sec-margin);
+            font-size: 120px;
+        }
     }
+
+
 }
 
 
@@ -52,12 +80,16 @@ h1.appTitle {
         @include flexbox;
         box-shadow: 1px 0.5px 1px 0px rgba(112, 76, 22, 0.69);
         position: absolute;
+        width: 80%;
         transform: translate(-50%, -50%);
         left: 50%;
         top: 50%;
         background: $white;
-        width: 25%;
         margin: auto;
+
+        @include if-min-width($desktop) {
+            width: 25%;
+        }
 
         .select__container {
             @include flex(2 1 auto);
@@ -68,12 +100,19 @@ h1.appTitle {
                 position: absolute;
                 top: 50%;
                 margin-top: -2px;
-                right: 150px;
+                right: 100px;
                 width: 0;
                 height: 0;
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-top: 10px solid $grey;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid $grey;
+
+                @include if-min-width($desktop) {
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid $grey;
+                    right: 150px;
+                }
 
                 &:hover {
                     cursor: pointer;
@@ -84,7 +123,7 @@ h1.appTitle {
 
         select.CuisinesSelect {
             @include border-radius($border-left);
-            padding: 1.5em .5em;
+            padding: .6em .5em;
             border: none;
             outline: none;
             -webkit-appearance: none;
@@ -92,10 +131,15 @@ h1.appTitle {
             appearance: none;
             color: $black;
             background: $white;
-            font-size: 1.2rem;
+            font-size: .75rem;
             width: 100%;
             position: relative;
             cursor: pointer;
+
+            @include if-min-width($desktop) {
+                padding: 1.5em .5em;
+                font-size: 1.2rem;
+            }
 
             .CuisinesSelectOptions {
                 color: 'blue';
@@ -122,14 +166,23 @@ h1.appTitle {
     .Suggestion__mySuggestion {
         position: absolute;
         left: 0;
-        bottom: -350px;
         width: 100%;
         text-align: center;
+        bottom: -200px;
+
+        @include if-min-width($desktop) {
+            bottom: -350px;
+        }
 
         .mySuggestion__name {
-            @include display-font(60px);
+            @include display-font(20px);
             color: #FF933D;
             text-transform: capitalize;
+
+            @include if-min-width($desktop) {
+                @include display-font(60px);
+                color: #FF933D;
+            }
         }
 
         .mySuggestion__address {
@@ -142,14 +195,19 @@ h1.appTitle {
     button {
         @include border-radius($border-right);
         position: relative;
-        width: 120px;
+        width: 80px;
         height: 100%;
         border: none;
         background: $orange--2;
         font-weight: $fw--3;
-        font-size: 35px;
+        font-size: 15px;
         text-align: center;
         color: $white;
         cursor: pointer;
+
+        @include if-min-width($desktop) {
+            width: 120px;
+            font-size: 35px;
+        }
     }
 }

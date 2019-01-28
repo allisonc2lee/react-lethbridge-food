@@ -16,7 +16,7 @@ const Suggestion = (props) => {
                    <h2 className={styles.mySuggestion__name}>{props.suggestion}</h2>
                    <p className={styles.mySuggestion__address}>{props.address}</p>
                 </div>
-                <button className={styles.Suggestion__button} onClick={props.suggested} disabled={!props.isDisabled} style={!props.isDisabled ? disabled : null }>GO !</button>
+                <button className={styles.Suggestion__button} onClick={props.suggested} disabled={!props.isDisabled} style={!props.isDisabled ? disabled : null }>GO!</button>
             </div>
         </Aux>
     )
