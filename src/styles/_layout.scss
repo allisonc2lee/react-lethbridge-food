@@ -48,9 +48,9 @@ h1.appTitle {
     background: $beach;
 
     .CuisinesSelect {
-        @include box-shadow(2px, 5px, 1px, 0px, rgba(112, 76, 22, 0.69));
         @include border-radius($border-radius);
         @include flexbox;
+        box-shadow: 1px 0.5px 1px 0px rgba(112, 76, 22, 0.69);
         position: absolute;
         transform: translate(-50%, -50%);
         left: 50%;
@@ -74,11 +74,16 @@ h1.appTitle {
                 border-left: 10px solid transparent;
                 border-right: 10px solid transparent;
                 border-top: 10px solid $grey;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
 
 
-        select.CuisinesOptions {
+        select.CuisinesSelect {
+            @include border-radius($border-left);
             padding: 1.5em .5em;
             border: none;
             outline: none;
@@ -90,8 +95,14 @@ h1.appTitle {
             font-size: 1.2rem;
             width: 100%;
             position: relative;
+            cursor: pointer;
+
+            .CuisinesSelectOptions {
+                color: 'blue';
+            }
 
         }
+
 
     }
 }
@@ -100,6 +111,9 @@ h1.appTitle {
 // ***********************
 
 .Suggestion {
+    @include border-radius($border-left);
+    //background: $orange;
+
     h2 {
         @include font-style($mont, $fw--2, $white, $height: auto, $spacing: 5px);
     }
@@ -136,5 +150,6 @@ h1.appTitle {
         font-size: 35px;
         text-align: center;
         color: $white;
+        cursor: pointer;
     }
 }

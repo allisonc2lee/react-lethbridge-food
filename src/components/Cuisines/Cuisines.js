@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Guide from '../Guide/Guide';
 import styles from '../../styles/app.module.scss';
+import Select from 'react-select'
 
 class Cuisines extends Component {
   state = {
@@ -40,9 +41,9 @@ class Cuisines extends Component {
 
     render() {
       // const onChanged = this.state.getValue
-      const CuisinesCopy = [...this.state.optionList]
+        const CuisinesCopy = [...this.state.optionList]
      // console.log(CuisinesCopy)
-      const cuisineItems = CuisinesCopy.map((item) => {
+        const cuisineItems = CuisinesCopy.map((item) => {
         return(
             <option key={item.cuisine.cuisine_id.toString()} value={ item.cuisine.cuisine_id } onClick={ this.clicked }>{item.cuisine.cuisine_name}</option>
             
@@ -53,8 +54,8 @@ class Cuisines extends Component {
         <div className={styles.Cuisines}>
             <div className={styles.CuisinesSelect}>
                 <div className={styles.select__container}>
-                    <select className={styles.CuisinesOptions} onChange={this.getOption}>
-                        <option id="selectCustion" value="1">Please select a cusion</option>
+                    <select className={styles.CuisinesSelect} onChange={this.getOption}>
+                        <option className={styles.CuisinesSelectOptions} id="selectCustion" value="1">Please select a cusion</option>
                         { cuisineItems }
                     </select>
                 </div>
