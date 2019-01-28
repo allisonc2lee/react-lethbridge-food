@@ -35,9 +35,9 @@ class Cuisines extends Component {
         return newVal
     }
 
-    clicked = () => {
-      this.props.onCuisineClick(this.props.id); // Call with cuisine id
-    };
+    // CallCuisineId = () => {
+    //   this.props.onCuisineClick(this.props.id); // Call with cuisine id
+    // };
 
     render() {
       // const onChanged = this.state.getValue
@@ -45,8 +45,7 @@ class Cuisines extends Component {
      // console.log(CuisinesCopy)
         const cuisineItems = CuisinesCopy.map((item) => {
         return(
-            <option key={item.cuisine.cuisine_id.toString()} value={ item.cuisine.cuisine_id } onClick={ this.clicked }>{item.cuisine.cuisine_name}</option>
-            
+            <option key={item.cuisine.cuisine_id.toString()} value={ item.cuisine.cuisine_id } >{item.cuisine.cuisine_name}</option>
         )
       })
 
@@ -55,7 +54,7 @@ class Cuisines extends Component {
             <div className={styles.CuisinesSelect}>
                 <div className={styles.select__container}>
                     <select className={styles.CuisinesSelect} onChange={this.getOption}>
-                        <option className={styles.CuisinesSelectOptions} id="selectCustion" value="1">Please select a cusion</option>
+                        <option className={styles.CuisinesSelectOptions} value="1">Please select a cusion</option>
                         { cuisineItems }
                     </select>
                 </div>
