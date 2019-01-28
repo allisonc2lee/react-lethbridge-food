@@ -25,8 +25,7 @@ button {
 // For the App.js
 // ***********************
 .container {
-    height: 100%;
-    min-height: 100%;
+    height: 100vh;
 }
 
 
@@ -35,7 +34,7 @@ button {
 .HeaderWrapper {
     width: 100%;
     height: 50vh;
-    min-height: 50vh;
+    // min-height: 50vh;
     background: $orange;
 }
 
@@ -87,9 +86,14 @@ h1.appTitle {
         background: $white;
         margin: auto;
 
+        // @include if-min-width($tablet) {
+        //     width: 70%;
+        // }
+
         @include if-min-width($desktop) {
-            width: 25%;
+            width: calc(42% - 1vw);
         }
+
 
         .select__container {
             @include flex(2 1 auto);
