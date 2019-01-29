@@ -33,7 +33,7 @@ button {
 // ***********************
 .HeaderWrapper {
     width: 100%;
-    height: 50vh;
+    min-height: 50vh;
     // min-height: 50vh;
     background: $orange;
 }
@@ -69,7 +69,8 @@ h1.appTitle {
 // ***********************
 
 .Cuisines {
-    height: 50vh;
+    position: relative;
+    width: 100%;
     min-height: 50vh;
     text-align: center;
     background: $beach;
@@ -78,11 +79,8 @@ h1.appTitle {
         @include border-radius($border-radius);
         @include flexbox;
         box-shadow: 1px 0.5px 1px 0px rgba(112, 76, 22, 0.69);
-        position: absolute;
         width: 80%;
-        transform: translate(-50%, -50%);
-        left: 50%;
-        top: 50%;
+        transform: translateY(-50%);
         background: $white;
         margin: auto;
 
@@ -97,6 +95,7 @@ h1.appTitle {
 
         .select__container {
             @include flex(2 1 auto);
+            transform: translateY(50%);
             text-align: center;
 
             &::after {
