@@ -79,17 +79,14 @@ h1.appTitle {
         @include border-radius($border-radius);
         @include flexbox;
         box-shadow: 1px 0.5px 1px 0px rgba(112, 76, 22, 0.69);
-        width: 80%;
+        width: 60%;
         transform: translateY(-50%);
         background: $white;
         margin: auto;
 
-        // @include if-min-width($tablet) {
-        //     width: 70%;
-        // }
 
         @include if-min-width($desktop) {
-            width: calc(42% - 1vw);
+            width: calc(42% - 5vw);
         }
 
 
@@ -99,22 +96,18 @@ h1.appTitle {
             text-align: center;
 
             &::after {
-                content: " ";
-                position: absolute;
-                top: 50%;
-                margin-top: -2px;
-                right: 100px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 5px solid $grey;
 
-                @include if-min-width($desktop) {
-                    border-left: 10px solid transparent;
-                    border-right: 10px solid transparent;
-                    border-top: 10px solid $grey;
-                    right: 150px;
+                @include if-min-width($tablet) {
+                    content: " ";
+                    position: absolute;
+                    top: 0;
+                    margin-top: -2px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid $grey;
+                    right: 25px;
                 }
 
                 &:hover {

@@ -4,6 +4,11 @@ import Cuisines from './components/Cuisines/Cuisines';
 import styles from './styles/app.module.scss';
 
 class App extends Component {
+
+  state = {
+    overlapped: false
+  }
+
   render() {
     return (
       <div className={styles.container}>
